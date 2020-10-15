@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <style>
+      .card {
+        margin-bottom: 15px;
+        border-radius: 7px;
+        box-shadow: 1px 2px;
+        text-align: left;
+      }
+
+      #inline-form {
+        margin-right: auto;
+        margin-left: auto;
+        width: 90%;
+      }
+    </style>
+
+      <script>
+          if ( window.history.replaceState ) {
+              window.history.replaceState( null, null, window.location.href );
+          }
+      </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>ToDo List</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">SimpleToDo</a>
+    </nav>
+
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">My ToDo ✅</h1>
+        <p>Usage: Type '--delete all--' to Delete all tasks<br>
+           Note: Do not close the window for tasks to remain same
+        </p>
+      </div>
+    </div>
+
+    <center>
+      <form class="form-inline" id="inline-form" method="POST">
+        {% csrf_token %}
+        <input type="text" name="task_title" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Add Task here">
+        <button type="submit" class="btn btn-primary mb-2">Add</button>
+
+      </form>
+    </center>
+    <!-- Cards -->
+    <br>
+
+    {% for task in tasks %}
+      <center>
+        <div class="card" style="width: 90%;">
+          <div class="card-body">
+            <h5 class="card-title" name="taskTitle">{{ forloop.counter }}. {{ task }}</h5>
+          </div>
+        </div>
+      </center>
+    {% endfor %}
+
+    <!-- Cards -->
+
+  </body>
+</html>
