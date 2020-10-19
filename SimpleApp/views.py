@@ -1,9 +1,15 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from .models import Task
 import socket
 
 hostname = socket.gethostname()
 client_ip = socket.gethostbyname(hostname)
+
+def delete_todo(request, todo_id):
+  print(todo_id)
+  Task.objects.get(id=todo_id).delete()
+  return HttpResponseRedirect('/')
 
 def delete_task(title):
   for obj in Task.objects.all():

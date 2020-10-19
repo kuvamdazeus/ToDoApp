@@ -13,10 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
+from django.contrib import admin # admin is feature which provides adminstrator access to our project
+
+from django.urls import path, include # path is function used for this mapping purpose
+
+# include function redirects users to urls.py of an app
+
+# Here our app name is : "SimpleApp"
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('SimpleApp.urls')),
+    path('admin/', admin.site.urls), # says user browser to run a function
+    path('', include('SimpleApp.urls')), # passes the control to "SimpleApp.urls" or urls.py file of SimpleApp
 ]

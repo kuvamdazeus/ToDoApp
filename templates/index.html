@@ -62,7 +62,14 @@
       <center>
         <div class="card" style="width: 90%;">
           <div class="card-body">
-            <h5 class="card-title" name="taskTitle">{{ forloop.counter }}. {{ task }}</h5>
+            <h5 class="card-title" name="taskTitle">
+              {{ forloop.counter }}. {{ task }}<br><br>
+
+              <form action="POST">
+                <a class="btn btn-info" href="delete_todo/{{ task.id }}/" role="button">Done</a>
+              </form>
+
+            </h5>
           </div>
         </div>
       </center>
